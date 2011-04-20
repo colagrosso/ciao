@@ -1,0 +1,6 @@
+Ciao	KEYWORD1
+begin	KEYWORD2
+addDisplay	KEYWORD2
+addButton	KEYWORD2
+announce	KEYWORD2
+run	KEYWORD2

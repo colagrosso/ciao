@@ -1,0 +1,202 @@
+h2. Ciao
+
+These libraries for Arduino and Processing communicate with the Ciao iOS app. Ciao uses Bonjour networking to discover Arduinos on your local network, and it communicates with them over standard TCP/IP sockets using a human-readable, line-based protocol. Arduinos with Ethernet shields work best, but USB Arduinos connected to a computer with Processing work, too.
+
+h3. Getting Started: I don't have anything
+
+You don't need an Arduino to use the Ciao app.  
+
+1. Download "Processing":http://processing.org/ and install it. 
+
+2. Copy the included Processing/libraries/ciao/ folder into Processing's libraries/ folder. The default folder on Mac OS X is:
+
+~/Documents/Processing/libraries/
+
+Create the libraries/ folder if it doesn't exist. Consult the instructions on "how to install a contributed library":http://wiki.processing.org/w/How_to_Install_a_Contributed_Library for help finding Processing's libraries/ folder.
+
+3. Launch Processing or restart it if it was already running. Select one (or more) of the sample Ciao apps: ColorChanger, MouseCoordinates, or SimpleCounter. Find them in the menu:
+
+File > Sketchbook > libraries > ciao > examples
+
+After opening them, click "Run".
+
+4. Launch Ciao on your iOS device.
+
+5. Find the sketches and interact with them in Ciao.
+
+h3. Getting Started: I have an Arduino, but no Ethernet shield 
+
+If you don't have an Ethernet shield, you may use your computer and a Processing sketch to connect your Arduino to your network. Once it's on the local network, Ciao can find the Arduino using Bonjour.
+
+1. Follow all the instructions above to install Processing and the Ciao Processing library. Make sure that you can communicate with Processing from the Ciao app on your iOS device.
+
+2. Copy all five folders (Ciao/, CiaoUSB/, EthernetBonjour/, EthernetDHCP/, and Messenger/) in the included Arduino/libraries/ folder into your Arduino's libraries/ folder. The default folder on Mac OS X is:
+
+~/Documents/Arduino/libraries/
+
+Create the libraries/ folder if it doesn't exist. Consult the "Arduino documentation on libraries":http://www.arduino.cc/en/Hacking/Libraries for help finding the libraries folder. There's more on "libraries in the reference section":http://www.arduino.cc/en/Reference/Libraries.
+
+3. Launch the Arduino IDE or restart it if it was already running. Load one of the CiaoUSB (not Ciao) sketches on to your Arduino, such as AnalogInput, BlinkM, SimpleCounter, or Toggle. Find them in the menu:
+
+File > Examples > CiaoUSB
+
+4. Launch Processing and load the CiaoArduino example:
+
+File > Sketchbook > libraries > ciao > examples > CiaoArduino
+
+and click "Run".
+
+5. Launch Ciao on your iOS device.
+
+6. Talk to your Arduino using Ciao.
+
+h3. Getting Started: I have an Arduino with an Ethernet shield
+
+You rock. This is the setup Ciao was designed for and where it works best. Setup is the easiest, too.
+
+1. Just like step 2 in the section above, load everything in the included Arduino/libraries folder into:
+
+~/Documents/Arduino/libraries/
+
+see the "Arduino documentation on libraries":http://www.arduino.cc/en/Hacking/Libraries if you need help.
+
+2. Load one of the Ciao (not CiaoUSB) sketches from here:
+
+File > Examples > Ciao
+
+onto your Arduino, including AnalogInput, BetterBlinkM, SimpleCounter, or Toggle.
+
+3. Launch Ciao on your iOS device.
+
+4. Talk to your Arduino using Ciao.
+
+h3. API
+
+Once you've gotten started and tested the example sketches, make a copy one of them to modify for your own sketch. The Arduino API has only five methods. Four of them are for use in setup(). Stick the fifth one at the top of loop().
+
+h4. Ciao.begin
+
+Call Ciao.begin() to specify the name of the service your Arduino is providing, which will show up in the Ciao app, and the port on which your Arduino is listening for connections. For example, BetterBlinkM.pde calls it this way
+
+Ciao.begin("BlinkM", SERVER_PORT);
+
+where SERVER_PORT is defined earlier in the code as 5282. The Ciao library uses this information to advertise the Arduino over Bonjour.
+
+h4. Ciao.addDisplay
+
+Displays allow an Arduino to send a message to the Ciao iOS app and have that message show up. Call Ciao.addDisplay() to add an LCD display in the Ciao app. The function comes in two forms. The simpler form:
+
+Ciao.addDisplay(char* label);
+
+will add an LCD with a label of _label_. The Ciao iOS app will then scan the incoming lines from the Arduino, and if it finds any prefixed with _label_ it will put the rest of the line in the LCD. For example, SimpleCounter.pde calls the function like this:
+
+Ciao.addDisplay("Value");
+
+If the Arduino then sends a line that looks like this:
+
+Value 25
+
+the Ciao iOS app will put "25" in the LCD labeled "Value".
+
+If you want to use an LCD label that is different than the prefix sent over the network used the alternate form:
+
+Ciao.addDisplay(char *label, char *prefix);
+
+For example, BetterBlinkM.pde calls the function this way:
+
+Ciao.addDisplay("Color", "color");
+
+which labels the LCD "Color", but scans the incoming lines for this form:
+
+color Blue
+
+which would display "Blue" in the LCD.
+
+As another example, AnalogInput.pde calls:
+
+Ciao.addDisplay("Analog IN 0", "AIN0");
+
+which puts the more verbose "Analog IN 0" on the LCD label, but scans for the more compact form over the network:
+
+AIN0 1.453
+
+which would display "1.453" in the LCD.
+
+h4. Ciao.addButton
+
+Buttons allow the Ciao iOS app to send messages to the Arduino. Call Ciao.addButton() to label those buttons and configure what they send. Like Ciao.addDisplay(), the function comes in to forms. The simpler form:
+
+addButton(char *label);
+
+adds a button to the Ciao iOS app with a label of _label_. When pressed, the Ciao iOS app will send the text _label_ over the network to the Arduino. For example, SimpleCounter.pde calls the function:
+
+Ciao.addButton("Up");
+
+which creates a button labeled "Up" and has Ciao send "Up" to the Arduino when pressed. To send something different than labeled, use the form:
+
+addButton(char *label, char *send);
+
+For example, BetterBlinkM.pde calls:
+
+Ciao.addButton("Red", "red");
+
+which creates a button labeled "Red" and sends the lowercase "red" to the Arduino when pressed.
+
+h4. Ciao.announce
+
+Call Ciao.announce() in the Arduino setup() function after the call to begin() and all calls to addDisplay() and addButton(). This function creates a Bonjour service record comprising all the added displays and buttons and announces the service on the network.
+
+h4. Ciao.run
+
+Call Ciao.run() once per loop(), such as at the top of the function. This keeps the Arduino registered on the Bonjour network.
+
+h3. Advanced: SRV TXT record format
+
+When creating a Bonjour service record, these libraries populate the TXT field of that record with the information the Ciao iOS app needs to create the displays and buttons. The format of that TXT field is a series of key–value pairs. Here is an example of what that TXT field looks like for BetterBlinkM.pde, which defines a display labeled "Color" and three buttons labeled "Red", "Green", and "Blue":
+
+format=Messenger
+
+Messenger is the only format Ciao currently supports. It is a text-based, line-oriented format.
+
+n=4
+
+In this example, there are 4 total displays and buttons (1+3).
+
+label1=Color
+prefix1=color
+
+The first is a display, so it has a label and prefix combination. "label1" is what is displayed on the LCD. "prefix1" is what is matched over the network from the Arduino.
+
+label2=Red
+send2=red
+
+The second is a button, so it has a label and send combination. "label2" is what is displayed on the button. "send2" is what is sent over the network to the Arduino.
+
+label3=Green
+send3=green
+label4=Blue
+send4=blue
+
+The other two buttons follow the same form as the red one.
+
+h3. Advanced: The protocol
+
+Ciao is a line-oriented protocol. The Ciao iOS app and the Arduino send text to each other terminated by a carriage return and a linefeed (CRLF or \r\n). The Ciao iOS app is the client, and the Arduino is the server. When the client connects, it sends the word
+
+CIAO
+
+followed by CRLF. After this initial communication, either the client or the server are allowed to send a line at any time. There is no request–response structure. AnalogInput.pde, for example, sends data in only one direction—from Arduino to iOS app—after the initial setup. By contrast, BetterBlinkM.pde and SimpleCounter.pde on the Arduino follow the form of receiving a button press line from the Ciao iOS app (e.g., "blue" or "Up") and send a line to update an LCD (e.g., "color Blue" or "Value 25").
+
+The protocol is simple enough that if you know what you are doing you can telnet into your Arduino and talk to it.
+
+h3. Credits
+
+Thank you very much to the authors of these projects, which are distributed with the Ciao libraries:
+
+EthernetBonjour is what makes this project possible. It's awesome.
+
+EthernetDHCP is not used, but it's distributed here because it's great and you should be using it. Just as Ciao frees you from having to type IP addresses and ports into an iOS app, EthernetDHCP frees you from having to hardcode IP addresses into your Arduino sketch. Seriously, in all the Ciao sketches, uncomment out the EthernetDHCP include line and use it instead of the hardcoded IP address.
+
+Messenger is the library used to parse what the Arduino receives over the network. It's useful to compare strings or parse numeric values from the stream of bytes.
+
+The Processing sketches use JmDNS to do all the Bonjour work. It's a beast, but it does the job reliably.
