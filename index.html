@@ -1,1 +1,102 @@
-Ciao
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Ciao: Say hello to your Arduino via Bonjour</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+
+	<link rel="stylesheet" href="css/style.css?v=2">
+
+</head>
+<body>
+	<div id="container" class="container">
+		<header class="span-24">
+            <div class="prepend-3 span-9">
+                <img src="img/ciao-logo.png" alt="Ciao logo" />
+            </div>
+            <div class="span-12 last">
+                <h1>Ciao</h1>
+                <p>Find your Arduino over Bonjour and talk to it from your iOS device.</p>
+            </div>
+		</header>
+
+		<div id="main" role="main" class="span-24">
+            <div class="prepend-3 span-9">
+                <p id="intro">Ciao makes it easy to talk to your Arduino from your iPhone or iPod touch. Simply,</p>
+                <ol id="threesimplesteps">
+                    <li>Get the app (coming soon)</li>
+                    <li>Load an <a href="http://github.com/colagrosso/ciao">example sketch</a></li>
+                    <li>Say hello to your Arduino</li>
+                </ol>
+            </div>
+            <div class="span-12 last">
+                <div class="span-12">
+                    <img id="hotseat" src="img/ciao-blinkm-example.png" alt="Ciao iOS screenshot" />
+                    <img class="visuallyhidden" src="img/ciao-list-of-arduinos.png" alt="Ciao list of Arduinos" />
+                    <img class="visuallyhidden" src="img/ciao-simple-counter-shield.png" alt="Ciao shield interface" />
+                    <img class="visuallyhidden" src="img/ciao-simple-counter-console.png" alt="Ciao console interface" />
+                </div>
+                <div class="span-12 last">
+                    
+                </div>
+            </div>
+            <div class="span-8">
+                <a href="img/ciao-list-of-arduinos.png" class="example-image-link"><img src="img/t-ciao-list-of-arduinos.png" alt="Ciao list of Arduinos" class="example-thumbnail" /></a>
+                <h2>Find your Arduino automatically</h2>
+                <p>Typing in IP address or ports? That's doing it wrong. Ciao uses Bonjour, so Arduinos appear the moment they come online and join the local network, even if they use DHCP.</p>
+            </div>
+            <div class="span-8">
+                <a href="img/ciao-simple-counter-shield.png" class="example-image-link"><img src="img/t-ciao-simple-counter-shield.png" alt="Ciao shield interface" class="example-thumbnail" /></a>
+                <h2>Define the UI from the Arduino</h2>
+                <p>Every Arduino is different, so they should have different UIs.
+                Call Ciao.addDisplay() and Ciao.addButton() from your Arduino code and your iOS device will lay out your LCDs and buttons.</p>
+            </div>
+            <div class="span-8 last">
+                <a href="img/ciao-simple-counter-console.png" class="example-image-link"><img src="img/t-ciao-simple-counter-console.png" alt="Ciao console interface" class="example-thumbnail" /></a>
+                <h2>Fast, simple communication</h2>
+                <p>Ciao chats to your Arduino in a line-based, event-driven manner. You can type directly into the app to send messages to your Arduino. The console view also displays exactly what is sent back and forth.</p>
+            </div>
+            <div class="newsection span-8 prepend-3 append-2">
+                <h2>How does it work?</h2>
+                <p>Find out more on the <a href="http://github.com/colagrosso/ciao">Ciao GitHub Project</a> page, where you can download the Arduino and (optional) Processing code and read the documentation.</p>
+            </div>
+            <div class="newsection span-8 append-3 last">
+                <h2>Support</h2>
+                <p>Open an <a href="http://github.com/colagrosso/ciao/issues">issue on GitHub</a>, or email <a href="mailto:ciao@ciaoapp.com">ciao@ciaoapp.com</a>.</p>
+            </div>
+		</div>
+
+		<footer class="span-24">
+            <p>
+                <a href="http://colagrosso.net/">Mike Colagrosso</a> created Ciao.
+            </p>
+		</footer>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.5.1.min.js"%3E%3C/script%3E'))</script>
+	<script src="js/plugins.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/example-image.js"></script>
+	<script>
+		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+</body>
+</html>
