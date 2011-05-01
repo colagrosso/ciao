@@ -195,7 +195,7 @@ Thank you very much to the authors of these projects, which are distributed with
 
 "EthernetBonjour":http://gkaindl.com/software/arduino-ethernet/bonjour is what makes this project possible. It's awesome.
 
-"EthernetDHCP":http://gkaindl.com/software/arduino-ethernet/dhcp is not used, but it's distributed here because it's great and you should be using it. Just as Ciao frees you from having to type IP addresses and ports into an iOS app, EthernetDHCP frees you from having to hardcode IP addresses into your Arduino sketch. Seriously, in all the Ciao sketches, uncomment out the EthernetDHCP include line and use it instead of the hardcoded IP address.
+"EthernetDHCP":http://gkaindl.com/software/arduino-ethernet/dhcp is not used, but it's distributed here because it's great and you should be using it. Just as Ciao frees you from having to type IP addresses and ports into an iOS app, EthernetDHCP frees you from having to hardcode IP addresses into your Arduino sketch. Seriously, in all the Ciao sketches, uncomment out the EthernetDHCP include line and use it instead of the hardcoded IP address. See the "SimpleCounterDHCP.pde example":https://github.com/colagrosso/ciao/blob/master/Arduino/libraries/Ciao/examples/SimpleCounterDHCP/SimpleCounterDHCP.pde for exactly how to do it.
 
 "Messenger":http://www.arduino.cc/playground/Code/Messenger is the library used to parse what the Arduino receives over the network. It's useful to compare strings or parse numeric values from the stream of bytes.
 
