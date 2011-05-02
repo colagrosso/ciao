@@ -24,6 +24,10 @@ After opening them, click "Run".
 
 5. Find the sketches and interact with them in Ciao.
 
+*Known issue*: Macs with Internet Sharing enabled may not route Bonjour traffic properly.
+
+*Troubleshooting*: "Discovery":http://itunes.apple.com/us/app/discovery-bonjour-browser/id305441017?mt=8 for iOS is a useful app to verify what Bonjour services your iOS device can see. Arduino and Processing sketches will show up in Discovery as @_ciao._tcp.@
+
 h3. Getting Started: I have an Arduino, but no Ethernet shield 
 
 If you don't have an Ethernet shield, you may use your computer and a Processing sketch to connect your Arduino to your network. Once it's on the local network, Ciao can find the Arduino using Bonjour.
