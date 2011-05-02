@@ -36,6 +36,10 @@ If you don't have an Ethernet shield, you may use your computer and a Processing
 
 Create the @libraries/@ folder if it doesn't exist. Consult the "Arduino documentation on libraries":http://www.arduino.cc/en/Hacking/Libraries for help finding the libraries folder. There's more on "libraries in the reference section":http://www.arduino.cc/en/Reference/Libraries.
 
+Once you copy the folders, the structure should look like this:
+
+p=. !http://ciaoapp.com/img/CiaoArduinoLibraries.png!
+
 3. Launch the Arduino IDE or restart it if it was already running. Load one of the CiaoUSB (not Ciao) sketches on to your Arduino, such as AnalogInput, BlinkM, SimpleCounter, or Toggle. Find them in the menu:
 
 bq. File > Examples > CiaoUSB
