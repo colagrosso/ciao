@@ -37,7 +37,7 @@ byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 
 byte ip[] = {10, 0, 1, 129};
 
-#define LED_PIN 13
+#define LED_PIN 3
 
 int ledState = HIGH;
 
