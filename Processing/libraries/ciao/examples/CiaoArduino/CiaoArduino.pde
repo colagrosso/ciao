@@ -9,7 +9,7 @@ this sketch.
 The Arduino defines the name of the service, the port to
 listen on (make sure it is above 1024), and displays and
 buttons. Do all the programming on the Arduino, and let
-this skecth serve merely as a conduit.
+this sketch serve merely as a conduit.
 
 */
 
