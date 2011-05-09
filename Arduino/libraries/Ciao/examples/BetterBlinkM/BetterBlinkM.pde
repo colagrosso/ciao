@@ -157,7 +157,7 @@ void loop()
     while (client.connected()) {
       while (client.available()) {
         char c = client.read();
-        if (DEBUG) Serial.println(b);
+        if (DEBUG) Serial.println(c);
         message.process(c);
       }
       Ciao.run();
