@@ -44,6 +44,10 @@ char outputDisplay[20];
 
 int ledState = HIGH;
 
+// interval at which to analog input updates (milliseconds)
+long interval = 2000;
+long previousMillis = 0;
+
 // Instantiate Messenger object with the message function and the default separator 
 // (the space character)
 Messenger message = Messenger(); 
@@ -115,6 +119,7 @@ void loop()
 { 
   // Call this once per loop().
   Ciao.run();
+  unsigned long currentMillis = millis();
   client = server.available();
   if (client) {
     if (DEBUG) Serial.println("client connected");
@@ -124,13 +129,20 @@ void loop()
         message.process(c);
         delay(1);
       }
-      int sensorValue = analogRead(A0);
-      client.print("AIN0 ");
-      client.println(sensorValue);
-      sensorValue = analogRead(A1);
-      client.print("AIN1 ");
-      client.println(sensorValue);
-      delay(500);
+      if (currentMillis - previousMillis > interval) {
+        previousMillis = currentMillis;
+        int sensorValue = analogRead(A0);
+        client.print("AIN0 ");
+        client.println(sensorValue);
+        sensorValue = analogRead(A1);
+        client.print("AIN1 ");
+        client.println(sensorValue);
+      }
+      // These need to be in the client connected loop
+      // because we never make it out while the
+      // client is connected.
+      Ciao.run();
+      currentMillis = millis();
     }
     delay(1);
     if (DEBUG) Serial.println("client stopping");
