@@ -90,6 +90,14 @@ Call @Ciao.begin()@ to specify the name of the service your Arduino is providing
 
 where SERVER_PORT is defined earlier in the code as 5282. The Ciao library uses this information to advertise the Arduino over Bonjour.
 
+h5. Advanced use of begin(): Setting the hostname
+
+There is a variant of @Ciao.begin()@ that accepts three arguments, the Arduino's hostname, the name of the service the Arduino provides, and the port. The Arduino's hostname comes first:
+
+<pre><code>    Ciao.begin("livingroom", "Living Room Lights", SERVER_PORT);</code></pre>
+
+and Ciao passes that parameter directly to EthernetBonjour, which announces your Arduino on the network. *Note*: Use this variant of @Ciao.begin()@  to add multiple Arduinos to a local network and give each Arduino a different hostname. Multiple Arduinos on a local network can't all use the default name, which is "arduino".
+
 h4. Ciao.addDisplay
 
 Displays allow an Arduino to send a message to the Ciao iOS app and have that message show up. Call @Ciao.addDisplay()@ to add an LCD display in the Ciao app. The function comes in two forms. The simpler form:
