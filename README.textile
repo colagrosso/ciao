@@ -168,36 +168,15 @@ Call @Ciao.run()@ once per @loop()@, such as at the top of the function. This ke
 
 h3. Advanced: Connecting to an Arduino via WiFi
 
-There are a few Arduino WiFi shields out there, but they won't work with Ciao
-or its dependent library, EthernetBonjour. At the time of writing, the state of
-WiFi for the Arduino is behind where I'd like it to be. The shields that I've
-used are slow to join my WPA2 access point, and their APIs are all mutually
-incompatible with each other. Still, Ciao would be much better with an Arduino
-connected via WiFi, so here's one simple way to get it to work. Get an Arduino,
-Ethernet shield, and an Asus WL-330gE. The Asus WL-330gE is sold as a pocket
-wireless access point, but it can be configured to work in Ethernet Adapter
-mode. Here's how to use it.
+There are a few Arduino WiFi shields out there, but they won't work with Ciao or its dependent library, EthernetBonjour. At the time of writing, the state of WiFi for the Arduino is behind where I'd like it to be. The shields that I've used are slow to join my WPA2 access point, and their APIs are all mutually incompatible with each other. Still, Ciao would be much better with an Arduino connected via WiFi, so here's one simple way to get it to work. Get an Arduino, Ethernet shield, and an Asus WL-330gE. The Asus WL-330gE is sold as a pocket wireless access point, but it can be configured to work in Ethernet Adapter mode. Here's how to use it.
 
-1. Follow all the instructions above to configure your Arduino and Ethernet
-shield. Ensure it works on the wired network.
+1. Follow all the instructions above to configure your Arduino and Ethernet shield. Ensure it works on the wired network.
 
-2. Plug in the Asus WL-330gE and using your computer configure it to run in
-Ethernet Adapter mode. You'll need to give the Asus WL-330gE the credentials to
-join your wireless network.
+2. Plug in the Asus WL-330gE and using your computer configure it to run in Ethernet Adapter mode. You'll need to give the Asus WL-330gE the credentials to join your wireless network.
 
-3. After the Asus WL-330gE reboots and joins your wireless network, use an
-Ethernet cable to connect your Arduino and shield to the Asus WL-330gE. The
-Arduino will send out Bonjour packets, and the Asus WL-330gE will forward them
-to the WiFi network. Launch Ciao and confirm it can communicate with the
-Arduino over WiFi.
+3. After the Asus WL-330gE reboots and joins your wireless network, use an Ethernet cable to connect your Arduino and shield to the Asus WL-330gE. The Arduino will send out Bonjour packets, and the Asus WL-330gE will forward them to the WiFi network. Launch Ciao and confirm it can communicate with the Arduino over WiFi.
 
-This is a simple, modular way to use Ciao with an Arduino over WiFi. Each piece
-is easy to set up and test independently. It's also fast to join the WiFi
-network because of the dedicated processing of the Asus WL-330gE. On the
-downside, the setup is a little bulky, and the Asus WL-330gE is another
-component to deliver power to. It would also be nicer if the Asus WL-330gE were
-cheaper, but the combination of the Asus WL-330gE and Ethernet shield is still
-cheaper than many dedicated WiFi shields.  
+This is a simple, modular way to use Ciao with an Arduino over WiFi. Each piece is easy to set up and test independently. It's also fast to join the WiFi network because of the dedicated processing of the Asus WL-330gE. On the downside, the setup is a little bulky, and the Asus WL-330gE is another component to deliver power to. It would also be nicer if the Asus WL-330gE were cheaper, but the combination of the Asus WL-330gE and Ethernet shield is still cheaper than many dedicated WiFi shields.  
 
 
 h3. Advanced: SRV TXT record format
