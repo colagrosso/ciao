@@ -1,3 +1,5 @@
+h3. *Note*: The Ciao Arduino libraries are not compatible with the Arduino 1.0 IDE. Download version 0023 from "the Arduino site":http://arduino.cc/en/Main/Software, which you can run in parallel with Arduino 1.0.
+
 h2. Ciao
 
 These libraries for Arduino and Processing communicate with the Ciao iOS app. Ciao uses Bonjour networking to discover Arduinos on your local network, and it communicates with them over standard TCP/IP sockets using a human-readable, line-based protocol. Arduinos with Ethernet shields work best, but USB Arduinos connected to a computer with Processing work, too.
